@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Weather Forecast</title>
+</head>
+
+<body>
+	
+<input type="text" id="myin" placeholder="City Name" style="display:block; margin:15px 0px;"/>	
+	
+<button id="mybtn">Get Temperature</button>	
+
+<div id="info">
+	
+</div>
+	
+<script>
+	document.getElementById("mybtn").onclick=  async ()=>{
+		
+		let p = document.getElementById("myin").value;
+ 
+		
+		var data = await fetch(`http://cricapi.com/api/cricketScore?unique_id=946765`)
+		 
+		var data2 = await data.json();
+		 
+		
+	  document.getElementById("info").innerHTML =`
+          <ul>
+          <li>City : ${data2.commentary}</li>
+          <li>Temp in Celcuis : ${data2.main.temp}</li>
+          <li>Description : ${data2.weather[0].description}</li>
+            </ul>
+     `
+	 }
+</script>	
+	
+	
+<!--<script>
+	
+	async function getSum(){
+		return new Promise((res, rej)=>{
+			 setTimeout(()=>{
+				 res("ok good")
+			 },1000);
+		})
+	}
+	
+	async function display(){
+		
+		var x = await getSum()
+		console.log(x);
+	}
+	
+	display();
+	
+	//getSum().then(data=>{
+//		console.log(data);
+//	})
+	
+</script>-->	
+	
+</body>
+</html>
+
+<!--- 9bed5c23b1170eb0071166248e96feb1 ---->

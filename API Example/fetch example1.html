@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Fetch api</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+	
+<h1>Fetch api</h1>
+	
+<p id="mydata"></p>
+<button id="mybtn">Fetch It</button>
+	
+<script type="text/javascript">
+	
+document.getElementById("mybtn").onclick = ()=>{
+	
+const fetchPromise	= fetch("https://jsonplaceholder.typicode.com/users");
+ 
+fetchPromise.then((data)=> {return data.json()})
+	
+.then((acctualData)=>{
+
+	function listofname(acctualData){
+	const people =	acctualData.map((person)=> `<li>${person.name}</li>`).join("\n")
+	return `<ul>${people}</ul>`
+	}
+ 
+	
+document.getElementById("mydata").innerHTML =  listofname(acctualData)
+	
+
+	
+ }
+	 
+	 )
+	
+ }
+
+
+	
+</script>
+	
+	
+</body>
+</html>

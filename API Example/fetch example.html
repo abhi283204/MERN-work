@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Fetch api</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+	
+<h1>Fetch api</h1>
+	
+<p id="mydata"></p>
+<button id="mybtn">Fetch It</button>
+	
+<script type="text/javascript">
+	
+document.getElementById("mybtn").onclick= ()=>{
+	
+const fetchData = fetch("https://ghibliapi.herokuapp.com/people");
+const main = document.getElementById("mydata");	
+	
+fetchData
+.then((data)=>{
+	return data.json();
+})
+.then((people)=>{
+	main.innerHTML = listOfNames(people);
+  });	
+	
+
+function listOfNames(people){
+	const names = people.map((person)=>`
+<li>${person.name}</li>`).join("\n");
+	return `<ul>${names}</ul>`
+}
+}
+	
+</script>
+	
+	
+</body>
+</html>
